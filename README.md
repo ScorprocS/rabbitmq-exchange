@@ -8,7 +8,9 @@ run RabbitmqApplication as java Application or Spring Boot application
 
 ## Try it
 GET http://localhost:8080/created
+
 GET http://localhost:8080/updated
+
 GET http://localhost:8080/deleted
 
 
