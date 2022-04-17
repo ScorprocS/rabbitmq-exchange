@@ -2,8 +2,8 @@ package fr.mns.tprabbit.rabbitmq.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 
@@ -18,7 +18,7 @@ import fr.mns.tprabbit.rabbitmq.event.UserEventData;
  * You'll have to adapt it to your own code to run the send with proper events and data
  *
  */
-@Controller
+@RestController
 public class HomeController {
 	@Autowired
 	private ExchangeSender exchangeSender;
