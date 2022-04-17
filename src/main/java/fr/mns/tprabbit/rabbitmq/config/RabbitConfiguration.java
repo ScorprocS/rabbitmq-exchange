@@ -10,7 +10,7 @@ import org.springframework.context.annotation.Configuration;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * 
+ * Configure rabbitMQ
  * @author Alex
  *
  */
