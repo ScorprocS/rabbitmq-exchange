@@ -1,7 +1,11 @@
 package fr.mns.tprabbit.rabbitmq.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+/**
+ * Data shared when a user is created or updated
+ * @author Alex
+ *
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserEventData extends EventData{
 	private Long id;

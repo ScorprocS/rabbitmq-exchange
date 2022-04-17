@@ -1,5 +1,12 @@
 package fr.mns.tprabbit.rabbitmq.event;
 
+/**
+ * Class to contain events
+ * Used to send and recieve data with serialized json 
+ * @author Alex
+ *
+ * @param <T>
+ */
 public class Event<T extends EventData> {
 	private EventType eventType;
 	private T data;

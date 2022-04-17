@@ -13,7 +13,12 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import fr.mns.tprabbit.rabbitmq.event.Event;
 
-
+/**
+ * ExchangeSender
+ * Used to send json event with header to an exchange
+ * @author Alex
+ *
+ */
 @Component
 public class ExchangeSender {
 
@@ -29,12 +34,20 @@ public class ExchangeSender {
     @Value("${user.event-key}")
     private String userEventKey;
 	
+    /**
+     * Convert the event to json, add eventType header and send it 
+     * @param message
+     * @throws JsonProcessingException
+     */
     public void sendEvent(Event<?> message) throws JsonProcessingException {
+    	//Convert the event to Json
         String messageJson = objectMapper.writeValueAsString(message);
-	    MessageProperties messageProperties = new MessageProperties();
-        messageProperties.setHeader("eventType", message.getEventType());
-        Message messageObject = new Message(messageJson.getBytes(), messageProperties);
-        
+        //MessageProperties allow to add header
+	    MessageProperties messageProperties = new MessageProperties(); 
+        messageProperties.setHeader("eventType", message.getEventType()); //set the header eventType to the type of the event
+        //create the message with json and header
+        Message messageObject = new Message(messageJson.getBytes(), messageProperties); //
+        //send the message to the exchange with the userEventKey
 		rabbitTemplate.convertAndSend(exchange.getName(),userEventKey, messageObject);
 	}
 	

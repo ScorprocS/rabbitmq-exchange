@@ -13,11 +13,21 @@ import fr.mns.tprabbit.rabbitmq.event.EventType;
 import fr.mns.tprabbit.rabbitmq.event.UserDeletedEventData;
 import fr.mns.tprabbit.rabbitmq.event.UserEventData;
 
+/**
+ * RestController class to simulate events and send the messages to rabbitMQ
+ * You'll have to adapt it to your own code to run the send with proper events and data
+ *
+ */
 @Controller
 public class HomeController {
 	@Autowired
 	private ExchangeSender exchangeSender;
 	
+	/**
+	 * Create a created user event and send it
+	 *
+	 * @return the response entity
+	 */
 	@GetMapping("created")
 	public ResponseEntity<String> created() {
 		 
@@ -40,6 +50,11 @@ public class HomeController {
 		
 		return ResponseEntity.ok("send");
 	}
+	/**
+	 * Create an updated user event and send it
+	 *
+	 * @return the response entity
+	 */
 	@GetMapping("updated")
 	public ResponseEntity<String> updated() {
 		 
@@ -62,7 +77,11 @@ public class HomeController {
 		
 		return ResponseEntity.ok("send");
 	}
-	
+	/**
+	 * Create a deleted user event and send it
+	 *
+	 * @return the response entity
+	 */
 	@GetMapping("deleted")
 	public ResponseEntity<String> deleted() {
 		 

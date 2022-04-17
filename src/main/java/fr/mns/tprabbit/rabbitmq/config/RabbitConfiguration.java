@@ -9,34 +9,37 @@ import org.springframework.context.annotation.Configuration;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+/**
+ * 
+ * @author Alex
+ *
+ */
 @EnableRabbit
 @Configuration
 public class RabbitConfiguration {
+	/**
+	 * Get the value exchange.name from application.properties
+	 */
     @Value("${exchange.name}")
     private String exchangeName;
     
+    /**
+     * Create if not exists a new direct exchange in rabbitMQ
+     * @return
+     */
     @Bean
     DirectExchange exchange() {
         return new DirectExchange(exchangeName);
     }
+    
+    /**
+     * Instanciate an ObjectMapper bean to use it everywhere with @Autowired
+     * @return
+     */
     @Bean
     ObjectMapper objectMapper() {
     	return new ObjectMapper();
-    }
-    
-    /*
-    @Bean
-    public MessageConverter jackson2MessageConverter() {
-      return new Jackson2JsonMessageConverter();
-    }
-    
-    @Bean
-    public RabbitTemplate rabbitTemplate(final ConnectionFactory connectionFactory) {
-        final var rabbitTemplate = new RabbitTemplate(connectionFactory);
-        rabbitTemplate.setMessageConverter(jackson2MessageConverter());
-        return rabbitTemplate;
-    }*/
-    
+    }   
     
 }
 

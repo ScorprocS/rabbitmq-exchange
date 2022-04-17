@@ -1,7 +1,11 @@
 package fr.mns.tprabbit.rabbitmq.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+/**
+ * Data sent when a user is deleted
+ * @author Alex
+ *
+ */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class UserDeletedEventData extends EventData{
 	private Long id;
